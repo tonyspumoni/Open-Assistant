@@ -68,6 +68,12 @@ Cypress.Commands.add("signInWithEmail", (emailAddress) => {
     })
     .then(() => {
       cy.signInUsingEmailedLink(emailAddress);
+      // accept the terms of service
+      cy.request({
+        url: "/api/tos",
+        method: "POST",
+        body: {},
+      });
     });
 });
 
